@@ -1776,7 +1776,7 @@ void BasicProxy::UACTsx::cancel_pending_tsx(int st_code)
           status = pjsip_tsx_send_msg(_cancel_tsx, cancel);
         }
 
-        if (status != PJ_SUCCESS)
+        if ((status != PJ_SUCCESS) && (status != PJ_EEXISTS))
         {
           //LCOV_EXCL_START
           TRC_ERROR("Error sending CANCEL, %s",
